@@ -4,13 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import 'mdb-ui-kit/css/mdb.min.css';
+
+
+
+import {ApiProvider} from '@reduxjs/toolkit/query/react';
+import { authApi } from './services/authApi';
+
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+
   <React.StrictMode>
-    <App />
+     <ApiProvider api = {authApi}>
+      
+      <App />
+
+    </ApiProvider>
   </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
