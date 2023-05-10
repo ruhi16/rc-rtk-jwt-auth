@@ -1,10 +1,15 @@
-import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import { MDBInput } from "mdb-react-ui-kit";
 import {toast} from 'react-toastify';
 
 import { useLoginUserMutation } from '../services/authApi';
+
+import { useAppDispatch } from '../app/hooks';
+
+// action creators, that change  
+import { setUser } from '../features/authSlice';    
 
 
 
@@ -19,6 +24,8 @@ const Login = () => {
    const [formValue, setFormValue] = useState(initialState);
    const { email, password } = formValue;
 
+   const dispatch = useAppDispatch();
+
    const navigate = useNavigate();
    const [loginUser, {data, isSuccess, isError, error}] = useLoginUserMutation();
 
@@ -32,16 +39,23 @@ const Login = () => {
     const handleLogin = async () => {
         if(email && password){
             await loginUser({email, password})
+            toast.success("User sucessfully loggedin.");
         }else{
             toast.error("Please fill all Input Fields");
         }
     };
 
     useEffect(() => {
+
         if(isSuccess){
             toast.success("User Login Sucessfully");
+            // console.log("Name:", data.user.firstname);
+            // console.log("Token:", data.user.access_token);
+
+            dispatch(setUser({name: data.user.firstname, token: data.user.access_token}));
             navigate('/dashboard');
         }
+
     }, [isSuccess]);
 
 
@@ -54,7 +68,10 @@ const Login = () => {
         <div className="container-fluid">
         <div className="row">
             <div className="col-lg-6 vh-100 bg-warning">
-                Hello
+                Hello, isError, isSuccess
+                {isError}
+                {isSuccess}
+                
             </div>
             <div className="col-lg-6 vh-100 bg-primary px-5 py-5">
             <div className="card">

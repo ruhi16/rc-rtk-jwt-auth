@@ -1,0 +1,106 @@
+return (
+    <BrowserRouter>
+    <Navbar />
+      <Routes>
+        {/* <Route element={<UnProtectedRoutes/>} >
+          <Route path='/' element={ <Welcome />} />           
+          <Route path='/login' element={ <Login />} />
+          <Route path='/register' element={ <Register />} />
+        </Route> */}
+
+          <Route path='/' element={<UnProtectedRoutes> <Welcome /></UnProtectedRoutes>} />           
+          <Route path='/login' element={<UnProtectedRoutes> <Login /></UnProtectedRoutes>} />
+          <Route path='/register' element={<UnProtectedRoutes> <Register /></UnProtectedRoutes>} />
+        
+        
+
+        {/* <Route path='/' element={<Navigate to='/login' replace />} /> */}         
+        {/* <Route path='/dashboard' element={ <PrivateRoutes > <Dashboard /></PrivateRoutes>} /> */}
+
+
+        <Route element={<Dashboard />} path='/dashboard' />
+        {/* <Route element={<PrivateRoutes/>} >
+          <Route element={<Dashboard />} path='/dashboard' />
+
+        </Route> */}
+
+      </Routes>
+    </BrowserRouter>
+    {/* <Route element={<Dashboard />} path='/dashboard' /> */}
+    
+    // <div className="App">
+    //   <h1>Hello This is RTK TypeScript Authentication with JWT Token</h1>
+    // </div>
+
+
+
+    export interface SchoolState {
+    school__id: string | null;
+    school_id: number | null;
+    school_name: string | null;
+    school_dise: string | null;
+    school_grade: string | null;
+    school_schedule_time: string | null;
+    school_vill: string | null;
+    school_post: string | null;
+    school_ps: string | null;
+    school_dist: string | null;
+    school_pin: string | null;
+    school_email: string | null;
+    school_mobile: [string | null];      
+    school_imgurl: [string | null];
+    school_status: string | null;
+    school_remarks: string | null;
+    
+}
+
+const initialSchoolState: SchoolState = {
+    school__id: null,
+    school_id: null,
+    school_name: null,
+    school_dise: null,
+    school_grade: null,
+    school_schedule_time: null,
+    school_vill: null,
+    school_post: null,
+    school_ps: null,
+    school_dist: null,
+    school_pin: null,
+    school_email: null,
+    school_mobile: [null],
+    school_imgurl: [null],
+    school_status: null,
+    school_remarks: null,
+}
+
+
+
+      // if(isSchoolSuccess){
+      //   console.log("School Data:",schoolData);
+      //   // schoolData.map((school)=>{
+      //   //   console.log("School Data:", school.name);
+      //   // })
+        
+      //   console.log("School Data:", schoolData);
+
+      //   const currentSchoolState : SchoolState = {
+      //     _id: null,
+      //     id: null,
+      //     name: "Hello",
+      //     dise: null,
+      //     grade: null,
+      //     schedule_time: null,
+      //     vill: null,
+      //     post: null,
+      //     ps: null,
+      //     dist: null,
+      //     pin: null,
+      //     email: null,
+      //     mobile: [null],
+      //     imgurl: [null],
+      //     status: null,
+      //     remarks: null,
+      //   }
+      //   dispatch(setSchool(schoolData));
+      // }
+      // // console.log("Successfully School data saved at store.");

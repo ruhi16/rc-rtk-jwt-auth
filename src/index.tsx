@@ -8,9 +8,12 @@ import 'mdb-ui-kit/css/mdb.min.css';
 
 
 
+
 import {ApiProvider} from '@reduxjs/toolkit/query/react';
 import { authApi } from './services/authApi';
 
+import { Provider } from 'react-redux';
+import {store} from './app/store';
 
 
 const root = ReactDOM.createRoot(
@@ -19,11 +22,15 @@ const root = ReactDOM.createRoot(
 root.render(
 
   <React.StrictMode>
-     <ApiProvider api = {authApi}>
-      
-      <App />
+    <Provider store={store}>
 
-    </ApiProvider>
+     {/* <ApiProvider api = {authApi}> */}
+      
+        <App />
+
+    {/* </ApiProvider> */}
+
+    </Provider>
   </React.StrictMode>
 
 );
